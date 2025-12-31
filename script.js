@@ -47,7 +47,7 @@ function addHtml(item) {
     content.appendChild(div);
 }
 
-function addEvents(item) {
+function addEvents() {
     const notes = document.querySelectorAll('.item textearea');
     const remove = document.querySelectorAll('.item .remove');
 
@@ -56,7 +56,18 @@ function addEvents(item) {
             dbItems[i] = {
                 text: item.value,
                 color: dbItems[i]?.color || item.parentElement.style.backgroundColor,
-            }
-        }
+            };
+
+            localStorage.setItem('dbItem', JSON.stringify(dbItems));
+        };
+    });
+
+    remove.forEach((item, i) => {
+        item.onclick = () => {
+            dbItems.splice(i, 1);
+            localStorage.setItem('dbItem', JSON.stringify(dbItems));
+            loadItems();
+        };
+        addEvents();
     });
 }
