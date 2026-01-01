@@ -34,4 +34,33 @@
     display: contents;
 }
 
+textarea{
+  padding: 5px;
+  padding-top: 14px;
+  outline: none;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  width: 200px;
+  height: 150px;
+}
 
+textarea::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #8b4453;
+}
+
+.item{
+  position: relative;
+  width: 200px;
+  height: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.remove{
+  position: absolute;
+  right: 6px;
+  cursor: pointer;
+  color: white;
+}
