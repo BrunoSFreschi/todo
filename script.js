@@ -19,6 +19,7 @@ const colors = [
 
 const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
+
 btnNew.onclick = () => {
     addHtml();
     addEvents();
