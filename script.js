@@ -37,12 +37,26 @@ btnNew.onclick = () => {
 function addHTML(item) {
     const div = document.createElement('div');
 
-    div.innerHTML = `<div class='item' style='background-color: ${item?.color || randomColor()}'>
-    <span class='remove'>X</span>
-    <textarea>${item?.text || ''}</textarea>
-  </div>`;
+    div.innerHTML = `
+        <div class="item" style="background: ${item?.color || randomGradient()}">
+          <span class="remove">X</span>
+          <textarea>${item?.text || ''}</textarea>
+        </div>`;
+
 
     content.appendChild(div);
+}
+
+function randomGradient() {
+    const color1 = colors[Math.floor(Math.random() * colors.length)];
+    let color2 = colors[Math.floor(Math.random() * colors.length)];
+
+    // garante que as cores sejam diferentes
+    while (color1 === color2) {
+        color2 = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    return `linear-gradient(135deg, ${color1}, ${color2})`;
 }
 
 function addEvents() {
