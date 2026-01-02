@@ -2,54 +2,51 @@ const content = document.querySelector('.content');
 const btnNew = document.querySelector('.add-note');
 
 
-let dbItems = localStorage.getItem('dbItem')
-  ? JSON.parse(localStorage.getItem('dbItem'))
-  : [];
-
+let dbItems = localStorage.getItem('dbItems')
+    ? JSON.parse(localStorage.getItem('dbItems'))
+    : [];
 
 const colors = [
-  "#845EC2",
-  "#008F7A",
-  "#008E9B",
-  "#FFC75F",
-  "#FF8066",
-  "#BA3CAF",
+    '#845EC2',
+    '#008F7A',
+    '#008E9B',
+    '#FFC75F',
+    '#FF8066',
+    '#BA3CAF',
 ];
 
-
 const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
-
-
-btnNew.onclick = () => {
-    addHtml();
-    addEvents();
-};
 
 function loadItems() {
     content.innerHTML = '';
     verifyNulls();
 
     dbItems.forEach((item, i) => {
-        addHtml(item, i);
+        addHTML(item, i);
     });
 
     addEvents();
 }
 
-function addHtml(item) {
+btnNew.onclick = () => {
+    addHTML();
+
+    addEvents();
+};
+
+function addHTML(item) {
     const div = document.createElement('div');
 
-    div.innerHTML = `<div class="item" style="background-color: ${
-        item?.color || randomColor()}">
-        <span class="remove">X</span>
-        <textarea>${item?.text || ""}</textarea>
-    </div>`;
+    div.innerHTML = `<div class='item' style='background-color: ${item?.color || randomColor()}'>
+    <span class='remove'>X</span>
+    <textarea>${item?.text || ''}</textarea>
+  </div>`;
 
     content.appendChild(div);
 }
 
 function addEvents() {
-    const notes = document.querySelectorAll('.item textearea');
+    const notes = document.querySelectorAll('.item textarea');
     const remove = document.querySelectorAll('.item .remove');
 
     notes.forEach((item, i) => {
@@ -59,16 +56,25 @@ function addEvents() {
                 color: dbItems[i]?.color || item.parentElement.style.backgroundColor,
             };
 
-            localStorage.setItem('dbItem', JSON.stringify(dbItems));
+            localStorage.setItem('dbItems', JSON.stringify(dbItems));
         };
     });
 
     remove.forEach((item, i) => {
         item.onclick = () => {
-            dbItems.splice(i, 1);
-            localStorage.setItem('dbItem', JSON.stringify(dbItems));
-            loadItems();
+            content.children[i].remove();
+            if (dbItems[i]) {
+                dbItems.splice(i, 1);
+                localStorage.setItem('dbItems', JSON.stringify(dbItems));
+            }
+            addEvents();
         };
-        addEvents();
     });
 }
+
+function verifyNulls() {
+    dbItems = dbItems.filter((item) => item);
+    localStorage.setItem('dbItems', JSON.stringify(dbItems));
+}
+
+loadItems();
