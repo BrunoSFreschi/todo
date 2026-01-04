@@ -9,12 +9,7 @@ Aplicação simples de notas rápidas que salva localmente no navegador usando `
   
 **Como usar**
 - Abra [index.html](index.html) no navegador.
-- (Opcional) Para servir localmente e evitar restrições de arquivos, execute na raíz do projeto:
 
-```bash
-python3 -m http.server 8000
-# e então abra http://localhost:8000
-```
 
 **Estrutura do projeto**
 - [index.html](index.html) — marcação principal.
