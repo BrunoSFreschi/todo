@@ -6,7 +6,7 @@ Aplicação simples de notas rápidas que salva localmente no navegador usando `
 - Criar notas rápidas com cor/gradiente aleatório.
 - Edição em tempo real com salvamento automático em `localStorage`.
 - Remover notas.
-
+  
 **Como usar**
 - Abra [index.html](index.html) no navegador.
 - (Opcional) Para servir localmente e evitar restrições de arquivos, execute na raíz do projeto:
