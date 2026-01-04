@@ -26,21 +26,9 @@ python3 -m http.server 8000
 - O arquivo `script.js` contém as funções principais: `loadItems()`, `addHTML()`, `randomGradient()` e `verifyNulls()`.
 
 **Problemas conhecidos / Sugestões**
-- Há um provável erro tipográfico em `style.css`: `padding-right: 1b0px;` — deve ser `10px`.
 - A propriedade `display: contents;` em `.content` pode ter comportamento diferente entre navegadores; trocar para um contêiner flex/grid pode melhorar compatibilidade.
 - Considere adicionar limite máximo de caracteres e confirmação ao excluir notas.
 
 **Contribuindo**
 - Abra uma issue descrevendo a alteração proposta ou envie um pull request.
 
-**Licença**
-- Sem licença especificada. Adicione um arquivo `LICENSE` se desejar publicar com termos específicos.
-
----
-
-Se quiser, eu posso:
-- Corrigir o `padding-right` do `style.css`.
-- Adicionar um servidor de desenvolvimento com `package.json` e scripts.
-- Implementar confirmação de exclusão ou exportação/importação das notas.
-
-Diga qual dessas ações prefere que eu execute a seguir.
